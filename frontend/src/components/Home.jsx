@@ -39,12 +39,12 @@ export default function Home({ onNavigate }) {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-          <a
-            href="#projects"
+          <button
+            onClick={() => onNavigate && onNavigate('/projects')}
             className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
           >
             View My Work
-          </a>
+          </button>
           <a
             href="#contact"
             className="px-8 py-3 border-2 border-purple-500 text-purple-600 font-medium rounded-full hover:bg-purple-50 transition-all duration-300"
@@ -64,6 +64,52 @@ export default function Home({ onNavigate }) {
           <button
             onClick={() => onNavigate && onNavigate('/about')}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-medium shadow hover:shadow-md transition-all"
+          >
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+              <path fillRule="evenodd" d="M12.97 4.47a.75.75 0 011.06 0l6 6a.75.75 0 010 1.06l-6 6a.75.75 0 11-1.06-1.06l4.72-4.72H4.5a.75.75 0 010-1.5h13.19l-4.72-4.72a.75.75 0 010-1.06z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Skills summary with Read More */}
+        <div className="max-w-3xl mx-auto text-left bg-white/70 backdrop-blur border border-gray-100 rounded-2xl p-6 shadow-sm mt-6">
+          <h3 className="text-2xl font-semibold text-gray-900 mb-2">Skills</h3>
+          <p className="text-gray-600 mb-4">
+            Comfortable across the stack: React, TypeScript, Tailwind CSS, Node.js,
+            Express, and MongoDB — with a focus on performance and DX.
+          </p>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {['React', 'TypeScript', 'Tailwind', 'Node.js', 'Express', 'MongoDB'].map(s => (
+              <span key={s} className="px-3 py-1.5 rounded-full text-xs font-medium bg-sky-50 text-sky-700 border border-sky-100">{s}</span>
+            ))}
+          </div>
+          <button
+            onClick={() => onNavigate && onNavigate('/skills')}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-all"
+          >
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+              <path fillRule="evenodd" d="M12.97 4.47a.75.75 0 011.06 0l6 6a.75.75 0 010 1.06l-6 6a.75.75 0 11-1.06-1.06l4.72-4.72H4.5a.75.75 0 010-1.5h13.19l-4.72-4.72a.75.75 0 010-1.06z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Contact summary with Read More */}
+        <div className="max-w-3xl mx-auto text-left bg-white/70 backdrop-blur border border-gray-100 rounded-2xl p-6 shadow-sm mt-6">
+          <h3 className="text-2xl font-semibold text-gray-900 mb-2">Contact</h3>
+          <p className="text-gray-600 mb-4">
+            I’m open to freelance, collaborations, and full‑time roles. Let’s talk about
+            your project or how I can help your team.
+          </p>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {['Email', 'LinkedIn', 'GitHub'].map(s => (
+              <span key={s} className="px-3 py-1.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700 border border-indigo-100">{s}</span>
+            ))}
+          </div>
+          <button
+            onClick={() => onNavigate && onNavigate('/contact')}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium shadow hover:shadow-md transition-all"
           >
             Read More
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">

@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
+import ProjectsPage from './pages/ProjectsPage';
+import SkillsPage from './pages/SkillsPage';
+import ContactPage from './pages/ContactPage';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -21,7 +24,16 @@ function App() {
     }
   };
 
-  const Page = path === '/about' ? AboutPage : (props) => <HomePage {...props} onNavigate={navigate} />;
+  const Page =
+    path === '/about'
+      ? AboutPage
+      : path === '/projects'
+      ? ProjectsPage
+      : path === '/skills'
+      ? SkillsPage
+      : path === '/contact'
+      ? ContactPage
+      : (props) => <HomePage {...props} onNavigate={navigate} />;
 
   return (
     <div>

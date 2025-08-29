@@ -20,9 +20,9 @@ export default function Navbar({ onNavigate, currentPath }) {
             <div className="hidden md:flex space-x-8">
               <NavButton active={currentPath === '/'} onClick={() => onNavigate?.('/')}>Home</NavButton>
               <NavButton active={currentPath === '/about'} onClick={() => onNavigate?.('/about')}>About</NavButton>
-              <a href="#projects" className="relative text-gray-700 font-medium group hover:text-blue-600 transition-colors duration-300">Projects<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
-              <a href="#skills" className="relative text-gray-700 font-medium group hover:text-blue-600 transition-colors duration-300">Skills<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
-              <a href="#contact" className="relative text-gray-700 font-medium group hover:text-blue-600 transition-colors duration-300">Contact<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+              <NavButton active={currentPath === '/projects'} onClick={() => onNavigate?.('/projects')}>Projects</NavButton>
+              <NavButton active={currentPath === '/skills'} onClick={() => onNavigate?.('/skills')}>Skills</NavButton>
+              <NavButton active={currentPath === '/contact'} onClick={() => onNavigate?.('/contact')}>Contact</NavButton>
             </div>
 
             {/* Mobile menu button */}
@@ -44,9 +44,10 @@ export default function Navbar({ onNavigate, currentPath }) {
           <div className="container mx-auto px-6 py-4 flex flex-col space-y-4">
             <button onClick={() => { onNavigate?.('/'); setIsMenuOpen(false); }} className="text-left text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300">Home</button>
             <button onClick={() => { onNavigate?.('/about'); setIsMenuOpen(false); }} className="text-left text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300">About</button>
-            <MobileNavLink href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</MobileNavLink>
+            <button onClick={() => { onNavigate?.('/projects'); setIsMenuOpen(false); }} className="text-left text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300">Projects</button>
+            <button onClick={() => { onNavigate?.('/skills'); setIsMenuOpen(false); }} className="text-left text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300">Skills</button>
             <MobileNavLink href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</MobileNavLink>
-            <MobileNavLink href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</MobileNavLink>
+            <button onClick={() => { onNavigate?.('/contact'); setIsMenuOpen(false); }} className="text-left text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300">Contact</button>
           </div>
         </div>
       </nav>
