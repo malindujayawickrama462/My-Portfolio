@@ -1,6 +1,45 @@
 export default function Home({ onNavigate }) {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Sidebar (desktop) */}
+      <aside className="hidden lg:flex fixed left-4 top-1/2 -translate-y-1/2 z-20">
+        <nav aria-label="Quick navigation" className="rounded-2xl border border-gray-100 bg-white/70 backdrop-blur shadow-sm px-3 py-4">
+          <ul className="flex flex-col items-center gap-3">
+            <li>
+              <button onClick={() => onNavigate && onNavigate('/')} className="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:text-sky-600 hover:bg-sky-50 border border-gray-200">
+                🏠
+              </button>
+            </li>
+            <li>
+              <button onClick={() => onNavigate && onNavigate('/about')} className="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:text-sky-600 hover:bg-sky-50 border border-gray-200">
+                👤
+              </button>
+            </li>
+            <li>
+              <button onClick={() => onNavigate && onNavigate('/projects')} className="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:text-sky-600 hover:bg-sky-50 border border-gray-200">
+                💼
+              </button>
+            </li>
+            <li>
+              <button onClick={() => onNavigate && onNavigate('/skills')} className="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:text-sky-600 hover:bg-sky-50 border border-gray-200">
+                🛠️
+              </button>
+            </li>
+            <li>
+              <button onClick={() => onNavigate && onNavigate('/contact')} className="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:text-sky-600 hover:bg-sky-50 border border-gray-200">
+                ✉️
+              </button>
+            </li>
+            <li>
+              <div className="w-8 h-px bg-gray-200 my-1" />
+            </li>
+            <li className="flex flex-col items-center gap-2">
+              <a href="#" aria-label="GitHub" className="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-gray-100 border border-gray-200">GH</a>
+              <a href="#" aria-label="LinkedIn" className="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-gray-100 border border-gray-200">in</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
       {/* Animated background elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
@@ -45,12 +84,12 @@ export default function Home({ onNavigate }) {
           >
             View My Work
           </button>
-          <a
-            href="#contact"
+          <button
+            onClick={() => onNavigate && onNavigate('/contact')}
             className="px-8 py-3 border-2 border-purple-500 text-purple-600 font-medium rounded-full hover:bg-purple-50 transition-all duration-300"
           >
             Let's Talk
-          </a>
+          </button>
         </div>
 
         {/* About summary with Read More */}
