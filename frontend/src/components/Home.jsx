@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Home({ onNavigate }) {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated background elements */}
@@ -51,6 +51,25 @@ export default function Home() {
           >
             Let's Talk
           </a>
+        </div>
+
+        {/* About summary with Read More */}
+        <div className="max-w-3xl mx-auto text-left bg-white/70 backdrop-blur border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <h3 className="text-2xl font-semibold text-gray-900 mb-2">About Me</h3>
+          <p className="text-gray-600 mb-4">
+            I’m a full‑stack developer focused on building fast, accessible, and elegant
+            web apps using React, Node.js, and modern CSS. I care about clean
+            architecture and delightful UX.
+          </p>
+          <button
+            onClick={() => onNavigate && onNavigate('/about')}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-medium shadow hover:shadow-md transition-all"
+          >
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+              <path fillRule="evenodd" d="M12.97 4.47a.75.75 0 011.06 0l6 6a.75.75 0 010 1.06l-6 6a.75.75 0 11-1.06-1.06l4.72-4.72H4.5a.75.75 0 010-1.5h13.19l-4.72-4.72a.75.75 0 010-1.06z" clipRule="evenodd" />
+            </svg>
+          </button>
         </div>
 
         {/* Scroll indicator */}

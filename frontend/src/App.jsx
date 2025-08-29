@@ -1,16 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 import Navbar from './components/Navbar';
 
 function App() {
+  const [path, setPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const onPopState = () => setPath(window.location.pathname);
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
+  const navigate = (to) => {
+    if (to !== window.location.pathname) {
+      window.history.pushState({}, '', to);
+      setPath(to);
+      // Scroll to top on navigation
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const Page = path === '/about' ? AboutPage : (props) => <HomePage {...props} onNavigate={navigate} />;
 
   return (
-   <div>
-    <Navbar/>
-    <HomePage />
-   </div>
+    <div>
+      <Navbar onNavigate={navigate} currentPath={path} />
+      <Page />
+    </div>
   )
 }
 

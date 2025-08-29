@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Navbar() {
+export default function Navbar({ onNavigate, currentPath }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -10,7 +10,7 @@ export default function Navbar() {
           <div className="flex justify-between items-center">
             {/* Logo/Brand */}
             <a 
-              href="#home" 
+              href={currentPath === '/about' ? '/' : '#home'} 
               className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
             >
               DevPortfolio
@@ -18,11 +18,11 @@ export default function Navbar() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
-              <NavLink href="#home">Home</NavLink>
-              <NavLink href="#about">About</NavLink>
-              <NavLink href="#projects">Projects</NavLink>
-              <NavLink href="#skills">Skills</NavLink>
-              <NavLink href="#contact">Contact</NavLink>
+              <NavButton active={currentPath === '/'} onClick={() => onNavigate?.('/')}>Home</NavButton>
+              <NavButton active={currentPath === '/about'} onClick={() => onNavigate?.('/about')}>About</NavButton>
+              <a href="#projects" className="relative text-gray-700 font-medium group hover:text-blue-600 transition-colors duration-300">Projects<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+              <a href="#skills" className="relative text-gray-700 font-medium group hover:text-blue-600 transition-colors duration-300">Skills<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+              <a href="#contact" className="relative text-gray-700 font-medium group hover:text-blue-600 transition-colors duration-300">Contact<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
             </div>
 
             {/* Mobile menu button */}
@@ -42,8 +42,8 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         <div className={`md:hidden bg-white transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
           <div className="container mx-auto px-6 py-4 flex flex-col space-y-4">
-            <MobileNavLink href="#home" onClick={() => setIsMenuOpen(false)}>Home</MobileNavLink>
-            <MobileNavLink href="#about" onClick={() => setIsMenuOpen(false)}>About</MobileNavLink>
+            <button onClick={() => { onNavigate?.('/'); setIsMenuOpen(false); }} className="text-left text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300">Home</button>
+            <button onClick={() => { onNavigate?.('/about'); setIsMenuOpen(false); }} className="text-left text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300">About</button>
             <MobileNavLink href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</MobileNavLink>
             <MobileNavLink href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</MobileNavLink>
             <MobileNavLink href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</MobileNavLink>
@@ -58,15 +58,12 @@ export default function Navbar() {
 }
 
 // Component for desktop navigation links
-function NavLink({ href, children }) {
+function NavButton({ children, onClick, active }) {
   return (
-    <a 
-      href={href} 
-      className="relative text-gray-700 font-medium group hover:text-blue-600 transition-colors duration-300"
-    >
+    <button onClick={onClick} className={`relative font-medium transition-colors duration-300 group ${active ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'}`}>
       {children}
-      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-    </a>
+      <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300 ${active ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+    </button>
   );
 }
 
