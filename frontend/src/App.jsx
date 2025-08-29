@@ -5,6 +5,8 @@ import ProjectsPage from './pages/ProjectsPage';
 import SkillsPage from './pages/SkillsPage';
 import ContactPage from './pages/ContactPage';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import FloatingCta from './components/FloatingCta.jsx';
 
 function App() {
   const [path, setPath] = useState(window.location.pathname);
@@ -39,6 +41,8 @@ function App() {
     <div>
       <Navbar onNavigate={navigate} currentPath={path} />
       <Page />
+      <Footer />
+      <FloatingCta onClick={() => navigate('/contact')} />
     </div>
   )
 }
