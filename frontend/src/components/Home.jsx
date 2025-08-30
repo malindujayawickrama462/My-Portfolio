@@ -55,6 +55,7 @@ export default function Home({ onNavigate }) {
           </button>
         </div>
 
+
         {/* About summary with Read More */}
         <div className="max-w-3xl mx-auto text-left bg-white/70 backdrop-blur border border-gray-100 rounded-2xl p-6 shadow-sm">
           <h3 className="text-2xl font-semibold text-gray-900 mb-2">About Me</h3>
